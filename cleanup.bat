@@ -1,0 +1,1 @@
+for /F "tokens=*" %A in (t) do rmdir "%A" /s /q
