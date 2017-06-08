@@ -1,10 +1,7 @@
-﻿using Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace vs_cleanup
 {
@@ -12,7 +9,7 @@ namespace vs_cleanup
 	{
 		static void Main(string[] args)
 		{
-			var json = JsonParser.FromJson(File.ReadAllText("Catalog.json"));
+			var json = (Dictionary<string, object>)new JsonParser().Parse(new StreamReader("Catalog.json"));
 			HashSet<string> directories = new HashSet<string>(Directory.EnumerateDirectories("."));
 			HashSet<string> systemDirectories = new HashSet<string>(directories);
 
